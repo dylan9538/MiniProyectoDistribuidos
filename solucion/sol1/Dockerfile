@@ -1,7 +1,10 @@
 FROM ubuntu:16.04
 
 #Add private key to container
-COPY private.asc /keys/private.asc
+COPY /keys/private.asc /keys/private.asc
+
+#Add aptly configuration
+ADD /conf/aptly.conf /etc/aptly.conf
 
 #Import key to gpg
 RUN gpg --import /keys/private.asc
