@@ -32,8 +32,8 @@ RUN apt-get install expect -y
 RUN aptly mirror create -architectures=amd64 -filter='Priority (required) | Priority (important) | Priority (standard) | postgresql' -filter-with-deps mirror-xenial http://mirror.upb.edu.co/ubuntu/ xenial main
 RUN aptly mirror update mirror-xenial
 
-ARG CACHEBUST=1
 #Add publish configuration
+RUN echo "Hola"
 ADD /conf/publish_snapshot.sh /scripts/publish_snapshot.sh
 RUN chmod +x /scripts/publish_snapshot.sh
 
@@ -41,4 +41,4 @@ RUN chmod +x /scripts/publish_snapshot.sh
 ADD /conf/Entrypoint.sh /scripts/Entrypoint.sh
 RUN chmod +x /scripts/Entrypoint.sh
 
-CMD ["./scripts/Entrypoint.sh", "postgresql,python3"]
+CMD ["./scripts/Entrypoint.sh"]

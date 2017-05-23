@@ -1,7 +1,6 @@
 #!/bin/bash
-IFS=', ' read -r -a array <<< "${1}"
+IFS=', ' read -r -a array <<< "${deps}"
 
-echo "${1}"
 echo "${array[@]}"
 
 symbol=" | "
