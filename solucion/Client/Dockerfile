@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM postgres:latest
 
 ADD keys/public.asc /tmp
 RUN apt-key add /tmp/public.asc
@@ -9,6 +9,5 @@ RUN chmod +x /scripts/Entrypoint.sh
 
 RUN apt-get update
 RUN apt-get install curl -y
-RUN echo "Hola"
 
 CMD ["./scripts/Entrypoint.sh"]
