@@ -41,4 +41,5 @@ RUN chmod +x /scripts/publish_snapshot.sh
 ADD /conf/Entrypoint.sh /scripts/Entrypoint.sh
 RUN chmod +x /scripts/Entrypoint.sh
 
+EXPOSE 8080
 CMD ["./scripts/Entrypoint.sh"]
