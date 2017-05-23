@@ -2,14 +2,14 @@ version: '2'
 
 
 services:
-  mirror:
+  mirror_c:
     image: mirror
     environment:
       - deps="postgresql,python3"
     expose:
       - "8080"
 
-  client:
+  client_c:
     build:
       context: ./Client
       dockerfile: Dockerfile
