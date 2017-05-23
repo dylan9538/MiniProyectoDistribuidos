@@ -5,7 +5,7 @@ services:
   mirror_c:
     image: mirror
     environment:
-      - deps="postgresql,python3"
+      - deps=postgresql,python3
     expose:
       - "8080"
 
@@ -13,9 +13,6 @@ services:
     build:
       context: ./Client
       dockerfile: Dockerfile
-    healthcheck:
-      test: ["CMD", "curl", "-f", "mirror_c:8080"]
-      interval: 2s
-      timeout: 3s
-      retries: 20
+    links:
+      - mirror_c
 
