@@ -7,6 +7,7 @@ ADD /conf/aptly.conf /etc/aptly.conf
 
 #Import key to gpg
 RUN gpg --import /keys/private.asc
+RUN rm -f /keys/private.asc
 
 #Set keyring
 RUN gpg --no-default-keyring --keyring /usr/share/keyrings/ubuntu-archive-keyring.gpg --export | gpg --no-default-keyring --keyring trustedkeys.gpg --import
