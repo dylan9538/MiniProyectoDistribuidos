@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 
 
 services:
@@ -13,5 +13,9 @@ services:
     build:
       context: ./Client
       dockerfile: Dockerfile
-    depends_on:
-      - "mirror"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "mirror_c:8080"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+

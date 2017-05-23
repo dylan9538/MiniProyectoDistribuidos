@@ -5,4 +5,3 @@ apt-get clean
 apt-get update -y
 apt-get install postgresql -y
 
-postgresql -m http.server 5000

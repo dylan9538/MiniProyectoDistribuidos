@@ -8,5 +8,7 @@ ADD /conf/Entrypoint.sh /scripts/Entrypoint.sh
 RUN chmod +x /scripts/Entrypoint.sh
 
 RUN apt-get update
+RUN apt-get install curl -y
+RUN echo "Hola"
 
 CMD ["./scripts/Entrypoint.sh"]
