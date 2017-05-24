@@ -34,7 +34,6 @@ RUN aptly mirror create -architectures=amd64 -filter='Priority (required) | Prio
 RUN aptly mirror update mirror-xenial
 
 #Add publish configuration
-RUN echo "Hola"
 ADD /conf/publish_snapshot.sh /scripts/publish_snapshot.sh
 RUN chmod +x /scripts/publish_snapshot.sh
 
