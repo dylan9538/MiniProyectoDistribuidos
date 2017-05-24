@@ -1,9 +1,9 @@
 #!/bin/bash
 # Read and split array that contain the dependencies defined by user.
 IFS=', ' read -r -a array <<< "${deps}"
-# Split symbol
+# Split symbol (used to separate dependencies)
 symbol=" | "
-# Base Filter
+# Base Filter (contains required, important and standard Aptly dependencies)
 mirrorFilter="Priority (required) | Priority (important) | Priority (standard) "
 # Add dependencies to filter
 for package in "${array[@]}"
