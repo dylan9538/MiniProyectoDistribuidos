@@ -3,7 +3,7 @@
 Andrés Felipe Piñeros<br>
 Dylan Torres<br>
 Johan David Ballesteros<br>
-<b>Códigos:</b> A00273344 - ? - A00309824 <br>
+<b>Códigos:</b> A00273344 - A00265772 - A00309824 <br>
 <b>Repositorio:</b> https://github.com/DavidPDP/MiniProyectoDistribuidos
 
 # Objetivos
@@ -87,6 +87,7 @@ A continuación se encuentra los enlaces de los archivos utilizados para el apro
 <a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/Mirror/Dockerfile"><b>Mirror Dockerfile</b></a>
 
 Para poder publicar el snapshot, Aptly pide la contraseña de la llave privada. Para esto se instaló la herramienta Expect la cual permite autimatizar las respuestas de las preguntas que se generan en el bash.
+
 <a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/edit/master/solucion/sol_sin_healthcheck/Mirror/conf/publish_snapshot.sh"><b>Publish Snapshot File</b></a>
 
 <a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/Mirror/conf/Entrypoint.sh"><b>Entry Point</b></a>
@@ -101,6 +102,19 @@ A continuación se encuentra los enlances de los archivos utilizados para la pru
 <a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/docker-compose.yml"><b>Docker Compose</b></a>
 
 # Pruebas Del Funcionamiento
+Para verificar el funcionamiento del mirror se procede a ejecutar el archivo docker-compose, el cual tiene la especificación para construir y desplegar el mirror y el cliente.
+
+```sh
+$ docker compose build 
+$ docker compose up
+```
+
+![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/tree)
+
+![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/tree)
 
 # Dificultades
 
+* Dependencias Del Contenedor: debido a que se busca hacer a los contenedores lo más ligeros posible, encontramos que algunos de los paquetes del sistema son eliminados. En este caso Aptly dependía de dos librerías (xz-utils y bzip2) que fueron eliminadas de la imagen del contenedor (ubuntu:16.04), por lo tanto debieron instalarse nuevamente.  
+* Importación De Llaves: debido a que no se tenía en claro el concepto del manejo de las llaves RSA, no sabíamos como realizar la importación de las llaves a los contenedores. Finalmente, se investigó sobre el paquete de seguridad GPG el cual nos permitió generar e importar las llaves para poder auntenticar la fuente de los paquetes en la interacción mirror <---> cliente.
+* Sincronización De Despliegue De Contenedores: debido a que el contenedor del cliente obtiene sus dependencias (paquetes) del mirror, es necesario desplegar completamente el servicio mirror antes de que el cliente inicie la descarga de dependencias. Para esto se investigó sobre dos posibles opciones: la primera utilizando el comando de docker healthcheck, que es una función nativa de docker, la cual finalmente no se pudo utilizar debido  
