@@ -44,11 +44,21 @@ $ apt-get update
 $ apt-get install aptly
 ```
 ## Configurar Mirror
-<p align='justify'>Con Aptly instalado se puede proceder a crear el mirror, para esto se ejecuta el siguiente comando. Este comando se compone de un filtro en el cual se especifíca los paquetes a instalar, seguido de esto se coloca la opción "filter-with-deps" para que se pueda descargar las dependencias de los paquetes definidos si tienen. Luego se asigna un nombre al mirror y una URL donde se descargarán los paquetes. El segundo comando actualiza el mirror.</p>
+<p align='justify'>Con Aptly instalado se puede proceder a crear el mirror, para esto se ejecuta el siguiente comando. Este comando se compone de un filtro en el cual se especifíca los paquetes a instalar (es aquí donde se deberá posteriormente ingresar los paquetes que el usuario defina sin proceder a dejar el comando en hardcode), seguido de esto se coloca la opción "filter-with-deps" para que se pueda descargar las dependencias de los paquetes definidos si tienen. Luego se asigna un nombre al mirror y una URL donde se descargarán los paquetes. El segundo comando actualiza el mirror.</p>
 
 ```sh
 $ aptly mirror create -architectures=amd64 -filter='Priority (required) | Priority (important) | Priority (standard) | postgresql' -filter-with-deps mirror-xenial http://mirror.upb.edu.co/ubuntu/ xenial main
 $ aptly mirror update mirror-xenial
+```
+Para poder publicar los paquetes del mirror se necesita primero realizar un snapshot del mismo.
+
+```sh
+$ aptly snapshot create mirror-snap-xenial from mirror mirror-xenial
+```
+Finalmente se publica el snapshot.
+
+```sh
+$ aptly publish snapshot mirror-snap-xenial
 ```
 
 
