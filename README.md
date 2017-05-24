@@ -111,7 +111,7 @@ $ docker compose up
 
 ![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_up_a.PNG)
 
-![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/tree)
+![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_up_b.PNG)
 
 # Dificultades
 
