@@ -1,4 +1,5 @@
-FROM ubuntu:16.04
+#Base image used
+FROM ubuntu:16.04 
 
 #Add private key to container
 ADD /keys/private.asc /keys/private.asc
@@ -18,7 +19,7 @@ RUN apt-key adv --keyserver keys.gnupg.net --recv-keys 9E3E53F19C7DE460
 RUN apt-get update
 RUN apt-get install aptly -y
 
-#Install System Aptly dependencies
+#Install System Aptly dependencies (These were deleted from base image ubuntu:16.04)
 RUN echo deb http://co.archive.ubuntu.com/ubuntu/ xenial main restricted >> /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get install xz-utils -y
@@ -41,4 +42,5 @@ RUN chmod +x /scripts/publish_snapshot.sh
 ADD /conf/Entrypoint.sh /scripts/Entrypoint.sh
 RUN chmod +x /scripts/Entrypoint.sh
 
+#EntryPoint Command 
 CMD ["./scripts/Entrypoint.sh"]
