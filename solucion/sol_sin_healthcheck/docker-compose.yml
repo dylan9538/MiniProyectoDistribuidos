@@ -1,0 +1,22 @@
+version: '2.1'
+
+
+services:
+  mirror_c:
+    build:
+      context: ./Mirror
+      dockerfile: Dockerfile
+    environment:
+      - deps=postgresql,python3
+    expose:
+      - "8080"
+
+  client_c:
+    build:
+      context: ./Client
+      dockerfile: Dockerfile
+    links:
+      - mirror_c
+    ports:
+      - "8082:8080"
+
