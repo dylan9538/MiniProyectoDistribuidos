@@ -3,7 +3,7 @@
 Andrés Felipe Piñeros<br>
 Dylan Torres<br>
 Johan David Ballesteros<br>
-<b>Códigos:</b>? - ? - A00309824 <br>
+<b>Códigos:</b> A00273344 - ? - A00309824 <br>
 <b>Repositorio:</b> https://github.com/DavidPDP/MiniProyectoDistribuidos
 
 # Objetivos
