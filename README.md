@@ -108,11 +108,22 @@ Para verificar el funcionamiento del mirror se procede a ejecutar el archivo doc
 $ docker compose build 
 $ docker compose up
 ```
+En la primera imagen se puede observar que el filtro que se la pasa al mirror para que se actualice contiene las dependencias definidas por el usuario en el docker-compose. También se puede observar como el cliente espera mientras el mirror termina de desplegarse.
 
 ![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_up_a.PNG)
 
+En la segunda imagen se puede observar como el mirror pide la contraseña de la llave privada y posteriormente a esto publica con éxito el snapshot, lo que significa que efectivamente con la herramienta expect se pudo responder las preguntas. También se puede observar que cuando incia el servicio el mirror, el cliente procede a desplegarse. 
+
 ![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_up_b.PNG)
 
+En la tercera y cuarta imagen se puede observar como el cliente descarga las dependencias (paquetes) desde el mirror por medio del host mirror_c que hace referencia al contenedor del mirror.
+
+![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_up_c.PNG)
+
+![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_up_d.PNG)
+
+En la quinta imagen se puede observar que los contenedores quedarón desplegados correctamente. También se procede a ingresar dentro del contenedor del cliente comprobando que inició el servicio. 
+![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_up_e.PNG)
 # Dificultades
 
 * Dependencias Del Contenedor: debido a que se busca hacer a los contenedores lo más ligeros posible, encontramos que algunos de los paquetes del sistema son eliminados. En este caso Aptly dependía de dos librerías (xz-utils y bzip2) que fueron eliminadas de la imagen del contenedor (ubuntu:16.04), por lo tanto debieron instalarse nuevamente.  
