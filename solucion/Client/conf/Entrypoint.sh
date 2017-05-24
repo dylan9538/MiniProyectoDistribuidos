@@ -13,5 +13,6 @@ chmod 777 /tmp
 apt-get clean
 apt-get update -y
 apt-get install python3 -y
+apt-get install postgresql -y
 
-postgres
+httpd-foreground

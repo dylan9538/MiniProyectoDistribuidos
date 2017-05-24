@@ -5,7 +5,7 @@ ADD /keys/private.asc /keys/private.asc
 #Add aptly configuration
 ADD /conf/aptly.conf /etc/aptly.conf
 
-#Import key to gpg
+#Import key to gpg and remove for safety
 RUN gpg --import /keys/private.asc
 RUN rm -f /keys/private.asc
 
@@ -42,5 +42,4 @@ RUN chmod +x /scripts/publish_snapshot.sh
 ADD /conf/Entrypoint.sh /scripts/Entrypoint.sh
 RUN chmod +x /scripts/Entrypoint.sh
 
-EXPOSE 8080
 CMD ["./scripts/Entrypoint.sh"]
