@@ -109,7 +109,7 @@ $ docker compose build
 $ docker compose up
 ```
 
-![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/tree)
+![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/docker-compose_build_a.png)
 
 ![alt text](https://github.com/DavidPDP/DockerLoadBalancer/blob/master/Images/tree)
 
@@ -117,4 +117,4 @@ $ docker compose up
 
 * Dependencias Del Contenedor: debido a que se busca hacer a los contenedores lo más ligeros posible, encontramos que algunos de los paquetes del sistema son eliminados. En este caso Aptly dependía de dos librerías (xz-utils y bzip2) que fueron eliminadas de la imagen del contenedor (ubuntu:16.04), por lo tanto debieron instalarse nuevamente.  
 * Importación De Llaves: debido a que no se tenía en claro el concepto del manejo de las llaves RSA, no sabíamos como realizar la importación de las llaves a los contenedores. Finalmente, se investigó sobre el paquete de seguridad GPG el cual nos permitió generar e importar las llaves para poder auntenticar la fuente de los paquetes en la interacción mirror <---> cliente.
-* Sincronización De Despliegue De Contenedores: debido a que el contenedor del cliente obtiene sus dependencias (paquetes) del mirror, es necesario desplegar completamente el servicio mirror antes de que el cliente inicie la descarga de dependencias. Para esto se investigó sobre dos posibles opciones: la primera utilizando el comando de docker healthcheck, que es una función nativa de docker, la cual finalmente no se pudo utilizar debido  
+* Sincronización De Despliegue De Contenedores: debido a que el contenedor del cliente obtiene sus dependencias (paquetes) del mirror, es necesario desplegar completamente el servicio mirror antes de que el cliente inicie la descarga de dependencias. Para esto se investigó sobre dos posibles soluciones: la primera utilizando el comando de docker healthcheck, que es una función nativa de docker, la cual finalmente no se pudo utilizar debido a que no se pudo configurar correctamente el comando de este. La otra solución fue por medio de un script que verificara por medio de la herramienta curl, que permite diagnosticar si un servicio se encuentra iniciado, si el contenedor del mirror ya se había iniciado.
