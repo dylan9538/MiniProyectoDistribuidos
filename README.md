@@ -55,10 +55,49 @@ Para poder publicar los paquetes del mirror se necesita primero realizar un snap
 ```sh
 $ aptly snapshot create mirror-snap-xenial from mirror mirror-xenial
 ```
-Finalmente se publica el snapshot.
+Finalmente se publica el snapshot y se incia el mirror.
 
 ```sh
 $ aptly publish snapshot mirror-snap-xenial
+$ aptly serve
 ```
 
+## Cliente
+Debido a que la comunicación se establece por medio de llaves RSA, lo primero a realizar en el lado del cliente es la importación de la llave pública generada por el mirror.
+
+```sh
+$ apt-key add [namePublicKey].asc
+```
+Se procede apuntar a la URL del mirror publicado para poder descargar los paquetes desde ese repositorio.
+
+```sh
+$ echo "deb http://[hostMirror]:8080/ xenial main" > /etc/apt/sources.list
+```
+Se actualiza el Apt para que consigne los cambios realizados.
+
+```sh
+$ apt-get update -y
+```
+
+# Automatización
+
+## Mirror
+A continuación se encuentra los enlaces de los archivos utilizados para el aprovisionamiento automático del mirror, en cada uno se específica los pasos realizados.
+
+<a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/Mirror/Dockerfile"><b>Mirror Dockerfile</b></a>
+
+Para poder publicar el snapshot, Aptly pide la contraseña de la llave privada. Para esto se instaló la herramienta Expect la cual permite autimatizar las respuestas de las preguntas que se generan en el bash.
+<a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/edit/master/solucion/sol_sin_healthcheck/Mirror/conf/publish_snapshot.sh"><b>Publish Snapshot File</b></a>
+
+<a href="https://github.com/DavidPDP/sd-docker-assignment/blob/master/codigo_estudiante/A00309824/Dockerfile"><b>Dockerfile Utilizado</b></a>
+
+## Cliente
+
+<a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/Mirror/Dockerfile"><b>Mirror Dockerfile</b></a>
+
+<a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/Mirror/Dockerfile"><b>Mirror Dockerfile</b></a>
+
+# Pruebas Del Funcionamiento
+
+# Dificultades
 
