@@ -108,21 +108,30 @@ Para verificar el funcionamiento del mirror se procede a ejecutar el archivo doc
 $ docker compose build 
 $ docker compose up
 ```
-En la primera imagen se puede observar que el filtro que se la pasa al mirror para que se actualice contiene las dependencias definidas por el usuario en el docker-compose. También se puede observar como el cliente espera mientras el mirror termina de desplegarse.
+Se puede comprobar la contrucción de los dos contenedores en las siguientes tres imagenes.
+
+![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_build_a%20(1).PNG)
+
+![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_build_b%20(1).PNG)
+
+![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_build_c%20(1).PNG)
+
+En la primera imagen se puede observar que el filtro que se le pasa al mirror para que se actualice contiene las dependencias definidas por el usuario en el docker-compose (python3 y postgresql). También se puede observar como el cliente espera mientras el mirror termina de desplegarse.
 
 ![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_up_a.PNG)
 
-En la segunda imagen se puede observar como el mirror pide la contraseña de la llave privada y posteriormente a esto publica con éxito el snapshot, lo que significa que efectivamente con la herramienta expect se pudo responder las preguntas. También se puede observar que cuando incia el servicio el mirror, el cliente procede a desplegarse. 
+En la segunda imagen se puede observar como el mirror pide la contraseña de la llave privada y posteriormente a esto publica con éxito el snapshot, lo que significa que efectivamente con la herramienta expect se pudo responder a las preguntas sobre el passphrase de la llave privada. También se puede observar que cuando incia el servicio del mirror, el cliente sale del estado de espara y entra en el estado de despliegue. 
 
 ![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_up_b.PNG)
 
-En la tercera y cuarta imagen se puede observar como el cliente descarga las dependencias (paquetes) desde el mirror por medio del host mirror_c que hace referencia al contenedor del mirror.
+En la tercera y cuarta imagen se puede observar como el cliente descarga las dependencias (paquetes) por medio del host mirror_c que hace referencia al contenedor del mirror previamente desplegado. Lo que significa que efectivamente está descargando los paquetes almacenados en ese mirror.
 
 ![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_up_c.PNG)
 
 ![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_up_d.PNG)
 
 En la quinta imagen se puede observar que los contenedores quedarón desplegados correctamente. También se procede a ingresar dentro del contenedor del cliente comprobando que inició el servicio. 
+
 ![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_up_e.PNG)
 # Dificultades
 
