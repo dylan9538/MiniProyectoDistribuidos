@@ -102,11 +102,11 @@ A continuación se encuentra los enlances de los archivos utilizados para la pru
 <a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/docker-compose.yml"><b>Docker Compose</b></a>
 
 # Pruebas Del Funcionamiento
+## Construcción
 Para verificar el funcionamiento del mirror se procede a ejecutar el archivo docker-compose, el cual tiene la especificación para construir y desplegar el mirror y el cliente.
 
 ```sh
 $ docker compose build 
-$ docker compose up
 ```
 Se puede comprobar la contrucción de los dos contenedores en las siguientes tres imagenes.
 
@@ -115,6 +115,12 @@ Se puede comprobar la contrucción de los dos contenedores en las siguientes tre
 ![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_build_b%20(1).PNG)
 
 ![alt text](https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/images/compose_build_c%20(1).PNG)
+
+## Despliegue
+
+```sh
+$ docker compose up
+```
 
 En la primera imagen se puede observar que el filtro que se le pasa al mirror para que se actualice contiene las dependencias definidas por el usuario en el docker-compose (python3 y postgresql). También se puede observar como el cliente espera mientras el mirror termina de desplegarse.
 
