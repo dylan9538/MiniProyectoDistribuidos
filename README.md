@@ -4,7 +4,7 @@ Andrés Felipe Piñeros<br>
 Dylan Torres<br>
 Johan David Ballesteros<br>
 <b>Códigos:</b> A00273344 - A00265772 - A00309824 <br>
-<b>Repositorio:</b> https://github.com/DavidPDP/MiniProyectoDistribuidos
+<b>Repositorio:</b> https://github.com/AndresPineros/MiniProyectoDistribuidos
 
 # Objetivos
 * Emplear herramientas de aprovisionamiento automático para la realización de tareas en infraestructura.
@@ -84,22 +84,22 @@ $ apt-get update -y
 ## Mirror
 A continuación se encuentra los enlaces de los archivos utilizados para el aprovisionamiento automático del mirror, en cada uno se específica los pasos realizados.
 
-<a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/Mirror/Dockerfile"><b>Mirror Dockerfile</b></a>
+<a href="https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/Mirror/Dockerfile"><b>Mirror Dockerfile</b></a>
 
 Para poder publicar el snapshot, Aptly pide la contraseña de la llave privada. Para esto se instaló la herramienta Expect la cual permite autimatizar las respuestas de las preguntas que se generan en el bash.
 
-<a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/edit/master/solucion/sol_sin_healthcheck/Mirror/conf/publish_snapshot.sh"><b>Publish Snapshot File</b></a>
+<a href="https://github.com/AndresPineros/MiniProyectoDistribuidos/edit/master/solucion/sol_sin_healthcheck/Mirror/conf/publish_snapshot.sh"><b>Publish Snapshot File</b></a>
 
-<a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/Mirror/conf/Entrypoint.sh"><b>Entry Point</b></a>
+<a href="https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/Mirror/conf/Entrypoint.sh"><b>Entry Point</b></a>
 
 ## Cliente
 A continuación se encuentra los enlances de los archivos utilizados para la prueba del mirror.
 
-<a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/Client/Dockerfile"><b>Mirror Dockerfile</b></a>
+<a href="https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/Client/Dockerfile"><b>Mirror Dockerfile</b></a>
 
-<a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/Client/conf/Entrypoint.sh"><b>Entry Point</b></a>
+<a href="https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/Client/conf/Entrypoint.sh"><b>Entry Point</b></a>
 
-<a href="https://github.com/DavidPDP/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/docker-compose.yml"><b>Docker Compose</b></a>
+<a href="https://github.com/AndresPineros/MiniProyectoDistribuidos/blob/master/solucion/sol_sin_healthcheck/docker-compose.yml"><b>Docker Compose</b></a>
 
 # Pruebas Del Funcionamiento
 ## Construcción
