@@ -7,11 +7,9 @@ Johan David Ballesteros<br>
 <b>Repositorio:</b> https://github.com/DavidPDP/MiniProyectoDistribuidos
 
 # Objetivos
-<p align='justify'>
 * Emplear herramientas de aprovisionamiento automático para la realización de tareas en infraestructura.
 * Instalar y configurar espejos de sistemas operativos en forma automática para el soporte al aprovisionamiento de máquinas virtuales en clústers de computo.
 * Especificar y desplegar ambientes conformados por contenedores virtuales para la realización de tareas específicas.
-</p>
 
 # Pasos Para Automatizar
 <p align='justify'>El problema inicial se basa en poder desplegar una infraestructura de contenedores virtuales que cuente con un mirror, el cual pueda almacenar paquetes que defina el usuario y un contenedor cliente que pueda descargar esos paquetes. Para dar solución al problema se decidió utilizar la tecnología Aptly, una herramienta que permite administrar repositorios Debian, reflejar repositorios remotos y crear snapshots.</p>
