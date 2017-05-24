@@ -1,5 +1,5 @@
-version: '2.1'
-# Containers
+version: '2'
+
 services:
   mirror_c: # Mirror container
     build:
@@ -14,7 +14,5 @@ services:
     build:
       context: ./Client
       dockerfile: Dockerfile
-    links:
-      - mirror_c
     ports:
       - "8082:8080"
